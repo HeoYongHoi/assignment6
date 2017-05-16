@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
     # @comment = Comment.new(comment_params)
     # @comment.content_id = params[:content_id]
-    #@comment.save
+    # @comment.save
     @comment.save   
     
     redirect_to content_path(@content)

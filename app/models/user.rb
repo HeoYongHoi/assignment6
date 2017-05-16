@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
     has_secure_password
     has_many :contents
     validates :email, uniqueness: true # email 하나에 대해서 여러가지 옵션

@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
     end
     def create
         user = User.find_by(email: params[:email])
+        user ||= User.find_by(nickname: params[:nickname])
         
         if user && user.authenticate(params[:password]) #로그인이 성공했을 때
             session[:user_id] = user.id

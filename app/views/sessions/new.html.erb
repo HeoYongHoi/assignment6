@@ -1,7 +1,8 @@
 <h1>로그인</h1>
 <%= flash[:alert] %>
 <%= form_tag sessions_path do %>
-    Email: <%= email_field_tag :email %><br>
+    Email: <%= email_field_tag :email %><br> 
+    Nickname: <%= text_field_tag :nickname %><br>
     Password: <%= password_field_tag :password %><br>
     <%= submit_tag '로그인' %>
 <% end %>
