@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+puts "Inserting category data.."
+[
+    ['러시아'],
+    ['중국'],
+    ['미국'],
+].each do |x|
+    Category.create(name: x[0])
+end

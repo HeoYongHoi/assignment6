@@ -4,7 +4,8 @@ class ContentsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @contents = Content.all
+    # @contents = Content.all
+    @contents = Content.search(params[:search])
   end
 
   def show
@@ -14,7 +15,7 @@ class ContentsController < ApplicationController
 
   def new
     @content = Content.new
-    
+    @categories = Category.all
   end
 
   def create
@@ -40,10 +41,9 @@ class ContentsController < ApplicationController
     @content.destroy
     
     redirect_to contents_url
-    
-    
   end
   
+
   private
   
   def authorize
@@ -51,7 +51,7 @@ class ContentsController < ApplicationController
   end
   
   def content_params
-    params.require(:content).permit(:title, :body, :user_id)
+    params.require(:content).permit(:title, :body, :user_id, :category_id)
   end
   
   

@@ -2,11 +2,17 @@
 <p>Find me in app/views/contents/index.html.erb</p>
 <%= link_to '새 글 쓰기', new_content_path %>
 <br>
+    <p>
+         <%= form_tag contents_path, :method => 'get' do %>
+        검색은 : <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+    </p>     
+<% end %>
 <br>
 <% @contents.each do |content| %>
     <!--<a href='/contents/<%#= content.id %>' style='text-decoration: none; color: black'><%#= content.title %></a>-->
-    <a href='<%= content_path(content) %>' style='text-decoration: none; color: black'><%= content.title %></a>
-    <%= content.user.email %>
+    제목 : <a href='<%= content_path(content) %>' style='text-decoration: none; color: black'><%= content.title %></a><br>
+    내용 : <%= content.body %><br>
     
     <% if can? :update, content %>
         <%= link_to '수정하기', edit_content_path(content) %>
